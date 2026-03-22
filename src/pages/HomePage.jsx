@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get(`${API_URL}/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);

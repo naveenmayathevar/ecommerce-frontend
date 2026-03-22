@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -16,7 +17,7 @@ export default function MyOrders() {
     const load = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/orders/myorders", {
+        const res = await axios.get(`${API_URL}/api/orders/myorders", {
           headers: { Authorization: token ? `Bearer ${token}` : undefined },
         });
 

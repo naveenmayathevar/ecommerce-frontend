@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useContext, useMemo, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
@@ -81,13 +82,13 @@ function CheckoutPage() {
         totalPrice: totals.total,
       };
 
-      await axios.post("http://localhost:5000/api/orders", orderPayload, {
+      await axios.post(`${API_URL}/api/orders", orderPayload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       // 2. Create Stripe Checkout Session and redirect
       const { data } = await axios.post(
-        "http://localhost:5000/api/stripe/create-checkout-session",
+        `${API_URL}/api/stripe/create-checkout-session",
         {
           items: items.map((it) => ({
             name: it.product.name,

@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -66,7 +67,7 @@ export default function AdminAddProduct() {
         countInStock: Number(form.countInStock),
       };
 
-      const res = await axios.post("http://localhost:5000/api/products", payload, {
+      const res = await axios.post(`${API_URL}/api/products", payload, {
         headers: {
           Authorization: token ? `Bearer ${token}` : undefined,
           "Content-Type": "application/json",

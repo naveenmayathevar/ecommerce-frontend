@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useEffect, useState, useContext, useMemo } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ export default function AdminProducts() {
     const load = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/products");
+        const res = await axios.get(`${API_URL}/api/products");
         if (!mounted) return;
         setProducts(Array.isArray(res.data) ? res.data : res.data.products || []);
       } catch (err) {
@@ -39,7 +40,7 @@ export default function AdminProducts() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this product? This cannot be undone.")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.delete(`${API_URL}/api/products/${id}`, {
         headers: { Authorization: token ? `Bearer ${token}` : undefined },
       });
       // optimistic update locally

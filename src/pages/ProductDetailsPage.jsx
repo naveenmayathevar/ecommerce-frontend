@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
@@ -15,7 +16,7 @@ function ProductDetailsPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${API_URL}/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch((err) => console.log(err));
   }, [id]);

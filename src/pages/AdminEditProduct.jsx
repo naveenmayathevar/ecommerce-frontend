@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
@@ -29,7 +30,7 @@ export default function AdminEditProduct() {
     const loadProduct = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const res = await axios.get(`${API_URL}/api/products/${id}`);
         if (!mounted) return;
         const p = res.data;
         setForm({
@@ -91,7 +92,7 @@ export default function AdminEditProduct() {
         countInStock: Number(form.countInStock),
       };
 
-      const res = await axios.put(`http://localhost:5000/api/products/${id}`, payload, {
+      const res = await axios.put(`${API_URL}/api/products/${id}`, payload, {
         headers: {
           Authorization: token ? `Bearer ${token}` : undefined,
           "Content-Type": "application/json",
@@ -112,7 +113,7 @@ export default function AdminEditProduct() {
     if (!window.confirm("Delete this product? This action cannot be undone.")) return;
     setDeleting(true);
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.delete(`${API_URL}/api/products/${id}`, {
         headers: { Authorization: token ? `Bearer ${token}` : undefined },
       });
 

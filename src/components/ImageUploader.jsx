@@ -1,3 +1,4 @@
+import API_URL from "../api";
 import React, { useState, useContext, useRef } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -10,7 +11,7 @@ import { AuthContext } from "../context/AuthContext";
  */
 export default function ImageUploader({
   onUpload,
-  uploadUrl = "http://localhost:5000/api/upload",
+  uploadUrl = `${API_URL}/api/upload`,
   fieldName = "image",
 }) {
   const { token } = useContext(AuthContext);
