@@ -16,7 +16,7 @@ function RegisterPage() {
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/api/auth/register", {
+      await axios.post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,

@@ -13,7 +13,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/products")
+      .get(`${API_URL}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);

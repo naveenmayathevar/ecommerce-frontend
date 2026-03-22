@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
     if (!token) return;
 
     try {
-      const res = await axios.get(`${API_URL}/api/cart", {
+      const res = await axios.get(`${API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -33,7 +33,7 @@ export function CartProvider({ children }) {
   const addToCart = async (productId, qty = 1) => {
     try {
       await axios.post(
-        `${API_URL}/api/cart",
+        `${API_URL}/api/cart`,
         { productId, qty },
         {
           headers: { Authorization: `Bearer ${token}` },

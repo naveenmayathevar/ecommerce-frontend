@@ -17,7 +17,7 @@ export default function MyOrders() {
     const load = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${API_URL}/api/orders/myorders", {
+        const res = await axios.get(`${API_URL}/api/orders/myorders`, {
           headers: { Authorization: token ? `Bearer ${token}` : undefined },
         });
 
