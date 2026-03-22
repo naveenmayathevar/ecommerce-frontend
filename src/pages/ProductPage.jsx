@@ -1,0 +1,8 @@
+// ProductPage.jsx — redirects to HomePage (product listing is on the home route)
+import { Navigate } from "react-router-dom";
+
+function ProductPage() {
+  return <Navigate to="/" replace />;
+}
+
+export default ProductPage;
